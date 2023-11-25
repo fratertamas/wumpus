@@ -2,11 +2,12 @@
 <strong>Neptunkód: </strong>GM8XI9 <br />
 <strong>Tantárgy: </strong>Programozási technológiák (BPI1116L)
 </p>
-<h1 style="text-align: center;">Tervezési minták</h1>
+<h1 style="text-align: center;">Tervezési minták egy OO programozási nyelvben. MVC, mint modell-nézet-vezérlő minta és néhány másik tervezési minta</h1>
+<h3 style="text-align: center;">Tervezési minták</h3>
 
 #### Mit nevezünk tervezési mintának?
 <p style="text-align: justify;">A tervezési minták (design patterns) gyakran felmerülő problémákra adott újrafelhasználható megoldások. Ezek segítik a szoftvertervezést és a fejlesztést is, mivel olyanok mint a tervrajzok, amelyeket testreszabhatunk. Ez nem egy konkrét kódrészlet vagy algoritmus, amelyet bemásolva használhatunk, hanem egy általános koncepció egy adott probléma megoldására. <br />
-A tervezési minta leírása objektum orientált programok esetében mivel a megoldás egy magasabb szintű leírása, így megadja azokat az egymással kommunikáló objektumokat, osztályokat, amelyek együttes viselkedése az adott problémára megoldás lehet. <br />
+A tervezési minta leírása objektum orientált programok esetében a megoldás egy magasabb szintű leírása, így megadja azokat az egymással kommunikáló objektumokat, osztályokat, amelyek együttes viselkedése az adott problémára megoldás lehet. <br />
 A tervezési minták által a rendszer egyszerűbb és karbantarhatóbb, illetve újrafelhasználhatóbb is lesz. Ennek következében ezek ismeretében pedig könnyeb a rendszert megérteni, mivel egy-egy rész megértése a kódban így egyszerűbbé válik.
 </p>
 
@@ -21,7 +22,7 @@ A tervezési minták által a rendszer egyszerűbb és karbantarhatóbb, illetve
 #### Tervezési minták kategóriái
 
 <p styte="text-align: justify;"></p>
-<p style="text-align: justify;">A tervezési mintákat legfőbb tulajdonságaik alapján különböző kategóriákba sorolhatóak. Lehet csoportosítani rendeltetésük szerint, vagy hatáskörül szerint is.</p>
+<p style="text-align: justify;">A tervezési minták legfőbb tulajdonságaik alapján különböző kategóriákba sorolhatóak. Lehet csoportosítani rendeltetésük szerint, vagy hatáskörük szerint is.</p>
 <p style="text-align: justify;">Most rendeltetésük szerint fogjuk őket csoportosítani. Ez a csoportosítás a tervezési minták alkalmazási területére és céljára fókuszál.</p>
 <ul>
 <li style="text-align: justify;"><strong>Létrehozási minták: </strong>Ezek a minták arra összpontosítanak, hogyan lehet létrehozni objektumokat, ezek növelik a meglévő kód rugalmasságát és újrafelhasználsát.
@@ -63,5 +64,21 @@ A tervezési minták által a rendszer egyszerűbb és karbantarhatóbb, illetve
 #### Tervezési minták közötti kapcsolatok
 <p style="text-align: justify;">A valós alkalmazási környezettől függően egy minta egyéb minták használatát is igényelheti, így ezek kombinálhatóak. A tervezési minták általában jól illeszkednek egymáshoz, és az együttes alkalmazásuk segíthet a rugalmas és karbantartható kód kialakításában.</p>
 
-![connections.png](connections.png "Tervezési minták közötti kapcsolatok.")
+![Ide jön a kép neve, ha nem töltődne be](connections.png "Ide pedig az a szöveg jön, amit egér rávitel során kell látni")
 
+<br />
+<h3 style="text-align: center;"> MVC, mint modell-nézet-vezérlő minta</h3>
+<p style="text-align: justify">Az MVC (Model-View-Controller) egy tervezési minta, amelyet szoftvertervezési és fejlesztési folyamatok során alkalmaznak. Az alapvető elképzelés az, hogy az alkalmazás elkülönített részeire (model, view, controller) bontsa az alkalmazás logikáját.</p>
+<ul>
+<li><strong>Model: </strong>Az alkalmazás állapotát és adatkezelését kezeli. Felelős az adatok tárolásáért, feldolgozásáért és a szükséges információk biztosításáért a nézet és a vezérlő számára.</li>
+<li><strong>View: </strong> A felhasználói felület megjelenítéséért felelős. Az adatokat megjeleníti, és lehetőséget nyújt a felhasználói interakcióra.</li>
+<li><strong>Controller: </strong>A felhasználói interakciókat kezeli, értelmezi és a megfelelő műveleteket hajtja végre. A modellel és a nézettel együttműködve irányítja az alkalmazás működését.</li>
+</ul>
+
+<br />
+<h3 style="text-align: center;">Néhány másik tervezési minta</h3>
+
+<ul>
+<li><strong>MVP (Model-View-Presenter): </strong>Hasonló az MVC-hez, de a vezérlő helyett itt a prezentert alkalmazzák. A presenter felelős a felhasználói interakciók kezeléséért és az adatok közvetítéséért a model és a nézet között.</li>
+<li><strong>MVVM (Model-View-ViewModel): </strong>Az MVVM adatazonosítási logikát hoz létre, ami lehetővé teszi az adatkötéseket a model és a nézet között. A ViewModel az adatokat elkészíti és formázza a nézet megjelenítéséhez, anélkül, hogy közvetlenül függne a nézettől.</li>
+</ul>
