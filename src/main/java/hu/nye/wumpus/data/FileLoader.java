@@ -1,5 +1,8 @@
 package hu.nye.wumpus.data;
 
+import hu.nye.wumpus.model.Board;
+import hu.nye.wumpus.model.Hero;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,18 +19,42 @@ public class FileLoader {
             throw new RuntimeException(e);
         }
         Scanner scanner = new Scanner(inputStream);
-        // A pálya mérete
-        int size = scanner.nextInt();
 
-        // A hős pozíciója és iránya
-        int heroColumn = scanner.next().charAt(0) - 'A';
-        int heroRow = scanner.nextInt();
-        char heroDirection = scanner.next().charAt(0);
+        Board board = new Board();
+        Hero hero;
 
-        // A pálya elemei
-        char[][] field = new char[size][size];
-        for (int i = 0; i < size; i++) {
-            field[i] = scanner.next().toCharArray();
+        //Pálya mérete
+        board.setSizeOfBoard(scanner.nextInt());
+
+        //A hős poziciója és iránya
+        hero = new Hero();
+        hero.setHeroColumn(scanner.next().charAt(0) - 'A');
+        hero.setHeroRow(scanner.nextInt());
+        hero.setHeroDirection(scanner.next().charAt(0));
+
+        //A pálya elemei
+        createBoard(board, board.getSizeOfBoard(), scanner);
+
+        System.out.println("Pálya mérete: " + board.getSizeOfBoard());
+        System.out.println("Hős pozíciója: " + (char)('A' + hero.getHeroColumn())  + " " + hero.getHeroRow());
+        System.out.println("Hős iránya: " + hero.getHeroDirection());
+        //System.out.println("Hős nyílainak száma: " + heroArrowCounter);
+
+        System.out.println("Pálya elemei:");
+        for (int i = 0; i < board.getSizeOfBoard(); i++) {
+            for (int j = 0; j < board.getSizeOfBoard(); j++) {
+                System.out.print(board.getBoard()[i][j]);
+            }
+            System.out.println();
         }
     }
+
+    private void createBoard(Board board, int sizeOfBoard, Scanner scanner) {
+            char[][] field = new char[sizeOfBoard][sizeOfBoard];
+            for (int i = 0; i < sizeOfBoard; i++) {
+                field[i] = scanner.next().toCharArray();
+            }
+        board.setBoard(field);
+    }
+
 }

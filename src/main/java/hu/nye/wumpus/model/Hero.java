@@ -15,6 +15,10 @@ public class Hero {
         this.numberOfArrows = numberOfArrows;
     }
 
+    public Hero() {
+
+    }
+
     public int getHeroColumn() {
         return heroColumn;
     }

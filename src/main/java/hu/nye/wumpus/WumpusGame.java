@@ -27,7 +27,6 @@ public class WumpusGame {
                 case "1":
                     FileLoader fileLoader = new FileLoader();
                     fileLoader.loadFromFile("wumpuszinput.txt");
-                    System.out.println("Pályabetöltés...");
                     break;
                 case "2":
                     System.out.println("DB betöltés....");
