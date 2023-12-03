@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FileLoader {
 
-    public void loadFromFile(String fileName){
+    public Board loadFromFile(String fileName){
         File file = new File("src/main/resources/"+fileName);
         FileInputStream inputStream = null;
         try {
@@ -34,19 +34,25 @@ public class FileLoader {
 
         //A pálya elemei
         createBoard(board, board.getSizeOfBoard(), scanner);
+        System.out.println("Pálya elemei:");
+        int numberOfArrows = 0;
+        for (int i = 0; i < board.getSizeOfBoard(); i++) {
+            for (int j = 0; j < board.getSizeOfBoard(); j++) {
+                System.out.print(board.getBoard()[i][j]);
+                if (board.getBoard()[i][j] == 'U') {
+                    numberOfArrows++;
+                }
+            }
+            System.out.println();
+        }
+        hero.setNumberOfArrows(numberOfArrows);
 
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
         System.out.println("Hős pozíciója: " + (char)('A' + hero.getHeroColumn())  + " " + hero.getHeroRow());
         System.out.println("Hős iránya: " + hero.getHeroDirection());
-        //System.out.println("Hős nyílainak száma: " + heroArrowCounter);
+        System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
 
-        System.out.println("Pálya elemei:");
-        for (int i = 0; i < board.getSizeOfBoard(); i++) {
-            for (int j = 0; j < board.getSizeOfBoard(); j++) {
-                System.out.print(board.getBoard()[i][j]);
-            }
-            System.out.println();
-        }
+        return board;
     }
 
     private void createBoard(Board board, int sizeOfBoard, Scanner scanner) {

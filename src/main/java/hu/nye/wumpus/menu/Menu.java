@@ -10,4 +10,13 @@ public class Menu {
         System.out.println("4. Játék");
         System.out.println("5. Kilépés");
     }
+
+    public static void printGamePlayMenu() {
+        System.out.println("Válasszon akciót: \n" +
+                "L - lépés a nézés irányába\n" +
+                "B - fordulás balra\n" +
+                "J - fordulás jobbra\n" +
+                "S - lövés\n" +
+                "Q - kilépés");
+    }
 }
