@@ -1,5 +1,6 @@
 package hu.nye.wumpus;
 
+import hu.nye.wumpus.data.FileLoader;
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Player;
 
@@ -24,7 +25,8 @@ public class WumpusGame {
 
             switch (choice) {
                 case "1":
-                    //loadFromFile();
+                    FileLoader fileLoader = new FileLoader();
+                    fileLoader.loadFromFile("wumpuszinput.txt");
                     System.out.println("Pályabetöltés...");
                     break;
                 case "2":
