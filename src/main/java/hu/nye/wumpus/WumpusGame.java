@@ -3,6 +3,7 @@ package hu.nye.wumpus;
 import hu.nye.wumpus.data.FileLoader;
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Player;
+import hu.nye.wumpus.service.Game;
 
 import java.util.Scanner;
 
@@ -38,7 +39,7 @@ public class WumpusGame {
                     break;
                 case "4":
                     System.out.println("Játék.....");
-                    //playGame();
+                    Game.playGame();
                     break;
                 case "5":
                     System.out.println("Kilépés...");
