@@ -1,7 +1,7 @@
 package hu.nye.wumpus.model;
 
 public class Player {
-    private String playerName;
+    private final String playerName;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -9,9 +9,5 @@ public class Player {
 
     public String getPlayerName() {
         return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
     }
 }
