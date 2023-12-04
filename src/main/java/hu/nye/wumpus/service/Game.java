@@ -1,6 +1,5 @@
 package hu.nye.wumpus.service;
 
-import hu.nye.wumpus.data.FileLoader;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Hero;
@@ -70,30 +69,46 @@ public class Game {
     }
 
     private static void move() {
+        int newRow;
+        int newColumn;
         if (hero.getHeroDirection() == 'E') {
-            int newRow = hero.getHeroRow();
-            int newColumn = hero.getHeroColumn() + 1;
-            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                hero.setHeroRow(newRow);
-                hero.setHeroColumn(newColumn);
+            if (board.getBoard()[hero.getHeroRow() -1][hero.getHeroColumn() + 1] == 'W'){
+                System.out.println("Fal jön, oda nem léphetsz!");
+            } else if (board.getBoard()[hero.getHeroRow() -1][hero.getHeroColumn() + 1] == 'P') {
+                if (hero.getNumberOfArrows() > 0){
+                    hero.setNumberOfArrows(hero.getNumberOfArrows()-1);
+                    hero.setHeroColumn(hero.getHeroColumn() + 1);
+                    hero.setHeroRow(hero.getHeroRow());
+                }else{
+                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
+                }
+            } else {
+                newRow = hero.getHeroRow();
+                newColumn = hero.getHeroColumn() + 1;
+                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                    hero.setHeroRow(newRow);
+                    hero.setHeroColumn(newColumn);
+                }
             }
+
+
         } else if (hero.getHeroDirection() == 'N') {
-            int newRow = hero.getHeroRow() - 1;
-            int newColumn = hero.getHeroColumn();
+            newRow = hero.getHeroRow() - 1;
+            newColumn = hero.getHeroColumn();
             if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
                 hero.setHeroRow(newRow);
                 hero.setHeroColumn(newColumn);
             }
         } else if (hero.getHeroDirection() == 'W') {
-            int newRow = hero.getHeroRow();
-            int newColumn = hero.getHeroColumn() - 1;
+            newRow = hero.getHeroRow();
+            newColumn = hero.getHeroColumn() - 1;
             if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
                 hero.setHeroRow(newRow);
                 hero.setHeroColumn(newColumn);
             }
         } else if (hero.getHeroDirection() == 'S') {
-            int newRow = hero.getHeroRow() + 1;
-            int newColumn = hero.getHeroColumn();
+            newRow = hero.getHeroRow() + 1;
+            newColumn = hero.getHeroColumn();
             if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
                 hero.setHeroRow(newRow);
                 hero.setHeroColumn(newColumn);
