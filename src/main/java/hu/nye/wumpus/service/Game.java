@@ -27,7 +27,10 @@ public class Game {
 
             switch (Character.toUpperCase(action)) {
                 case 'L':
-                    //move(heroDirection, heroColumn, heroRow, field);
+                    move();
+                    printHeroData();
+                    printBoard();
+                    
                     break;
                 case 'B':
                     turnLeft();
@@ -50,6 +53,40 @@ public class Game {
             }
         } while (!heroWin && (Character.toUpperCase(action) != 'Q'));
 }
+
+    private static void printBoard() {
+        int row = hero.getHeroRow()-1;
+        for (int i = 0; i < board.getSizeOfBoard(); i++) {
+            for (int j = 0; j < board.getSizeOfBoard(); j++) {
+                if (j == hero.getHeroColumn() && i == row){
+                    System.out.print('H');
+                }else{
+                    System.out.print(board.getBoard()[i][j]);
+                }
+
+            }
+            System.out.println();
+        }
+    }
+
+    private static void move() {
+        if (hero.getHeroDirection() == 'E') {
+            int newRow = hero.getHeroRow();
+            int newColumn = hero.getHeroColumn() + 1;
+            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                hero.setHeroRow(newRow);
+                hero.setHeroColumn(newColumn);
+            }
+        } else if (hero.getHeroDirection() == 'N') {
+            int newRow = hero.getHeroRow() - 1;
+            int newColumn = hero.getHeroColumn();
+            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                hero.setHeroRow(newRow);
+                hero.setHeroColumn(newColumn);
+            }
+
+        }
+    }
 
     private static void turnRight() {
         if (hero.getHeroDirection() == 'E'){
