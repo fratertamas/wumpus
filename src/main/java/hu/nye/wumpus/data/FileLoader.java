@@ -27,11 +27,14 @@ public class FileLoader {
         board.setSizeOfBoard(scanner.nextInt());
 
         //A hős poziciója és iránya
-        hero = new Hero();
+        int heroCollumn = scanner.next().charAt(0) - 'A';
+        int heroRow = scanner.nextInt();
+        char heroDirection = scanner.next().charAt(0);
+        /*hero = new Hero();
         hero.setHeroColumn(scanner.next().charAt(0) - 'A');
         hero.setHeroRow(scanner.nextInt());
         hero.setHeroDirection(scanner.next().charAt(0));
-
+*/
         //A pálya elemei
         createBoard(board, board.getSizeOfBoard(), scanner);
         System.out.println("Pálya elemei:");
@@ -45,7 +48,8 @@ public class FileLoader {
             }
             System.out.println();
         }
-        hero.setNumberOfArrows(numberOfArrows);
+
+        hero = new Hero(heroCollumn, heroRow,heroDirection, false, numberOfArrows);
 
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
         System.out.println("Hős pozíciója: " + (char)('A' + hero.getHeroColumn())  + " " + hero.getHeroRow());
@@ -56,10 +60,10 @@ public class FileLoader {
     }
 
     private void createBoard(Board board, int sizeOfBoard, Scanner scanner) {
-            char[][] field = new char[sizeOfBoard][sizeOfBoard];
-            for (int i = 0; i < sizeOfBoard; i++) {
-                field[i] = scanner.next().toCharArray();
-            }
+        char[][] field = new char[sizeOfBoard][sizeOfBoard];
+        for (int i = 0; i < sizeOfBoard; i++) {
+            field[i] = scanner.next().toCharArray();
+        }
         board.setBoard(field);
     }
 
