@@ -2,6 +2,7 @@ package hu.nye.wumpus.data;
 
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
+import hu.nye.wumpus.service.Game;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,8 +11,8 @@ import java.util.Scanner;
 
 public class FileLoader {
 
-    public Board loadFromFile(String fileName){
-        File file = new File("src/main/resources/"+fileName);
+    public Board loadFromFile(String fileName) {
+        File file = new File("src/main/resources/" + fileName);
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(file);
@@ -21,22 +22,23 @@ public class FileLoader {
         Scanner scanner = new Scanner(inputStream);
 
         Board board = new Board();
-        Hero hero;
 
         //Pálya mérete
         board.setSizeOfBoard(scanner.nextInt());
 
         //A hős poziciója és iránya
-        int heroCollumn = scanner.next().charAt(0) - 'A';
+        int heroColumn = scanner.next().charAt(0) - 'A';
         int heroRow = scanner.nextInt();
         char heroDirection = scanner.next().charAt(0);
-        /*hero = new Hero();
-        hero.setHeroColumn(scanner.next().charAt(0) - 'A');
-        hero.setHeroRow(scanner.nextInt());
-        hero.setHeroDirection(scanner.next().charAt(0));
-*/
+
+        // Create the hero object
+
+
         //A pálya elemei
         createBoard(board, board.getSizeOfBoard(), scanner);
+
+
+
         System.out.println("Pálya elemei:");
         int numberOfArrows = 0;
         for (int i = 0; i < board.getSizeOfBoard(); i++) {
@@ -49,16 +51,21 @@ public class FileLoader {
             System.out.println();
         }
 
-        hero = new Hero(heroCollumn, heroRow,heroDirection, false, numberOfArrows);
+        Hero hero = new Hero(heroColumn, heroRow, heroDirection, false, numberOfArrows);
+
+        hero.setNumberOfArrows(numberOfArrows);
+
 
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
-        System.out.println("Hős pozíciója: " + (char)('A' + hero.getHeroColumn())  + " " + hero.getHeroRow());
+        System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
         System.out.println("Hős iránya: " + hero.getHeroDirection());
         System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
 
+
+        // Pass the hero object to the Game class
+        Game game = new Game(board, hero);
         return board;
     }
-
     private void createBoard(Board board, int sizeOfBoard, Scanner scanner) {
         char[][] field = new char[sizeOfBoard][sizeOfBoard];
         for (int i = 0; i < sizeOfBoard; i++) {
