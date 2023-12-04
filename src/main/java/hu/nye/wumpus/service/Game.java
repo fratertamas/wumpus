@@ -84,38 +84,51 @@ public class Game {
                 hero.setHeroRow(newRow);
                 hero.setHeroColumn(newColumn);
             }
-
+        } else if (hero.getHeroDirection() == 'W') {
+            int newRow = hero.getHeroRow();
+            int newColumn = hero.getHeroColumn() - 1;
+            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                hero.setHeroRow(newRow);
+                hero.setHeroColumn(newColumn);
+            }
+        } else if (hero.getHeroDirection() == 'S') {
+            int newRow = hero.getHeroRow() + 1;
+            int newColumn = hero.getHeroColumn();
+            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                hero.setHeroRow(newRow);
+                hero.setHeroColumn(newColumn);
+            }
         }
     }
 
-    private static void turnRight() {
-        if (hero.getHeroDirection() == 'E'){
+    private static void turnRight () {
+        if (hero.getHeroDirection() == 'E') {
             hero.setHeroDirection('S');
-        }else if (hero.getHeroDirection() == 'S'){
+        } else if (hero.getHeroDirection() == 'S') {
             hero.setHeroDirection('W');
-        }else if (hero.getHeroDirection() == 'W'){
+        } else if (hero.getHeroDirection() == 'W') {
             hero.setHeroDirection('N');
-        }else{
+        } else {
             hero.setHeroDirection('E');
         }
     }
 
-    private static void printHeroData() {
+    private static void printHeroData () {
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
-        System.out.println("Hős pozíciója: " + (char)('A' + hero.getHeroColumn())  + " " + hero.getHeroRow());
+        System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
         System.out.println("Hős iránya: " + hero.getHeroDirection());
         System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
 
     }
 
-    private static void turnLeft(){
-        if (hero.getHeroDirection() == 'E'){
+    private static void turnLeft () {
+        if (hero.getHeroDirection() == 'E') {
             hero.setHeroDirection('N');
-        }else if (hero.getHeroDirection() == 'N'){
+        } else if (hero.getHeroDirection() == 'N') {
             hero.setHeroDirection('W');
-        }else if (hero.getHeroDirection() == 'W'){
+        } else if (hero.getHeroDirection() == 'W') {
             hero.setHeroDirection('S');
-        }else{
+        } else {
             hero.setHeroDirection('E');
         }
     }
