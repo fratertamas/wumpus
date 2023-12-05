@@ -1,8 +1,10 @@
 package hu.nye.wumpus.gameengine;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import hu.nye.wumpus.database.TopScore;
 import hu.nye.wumpus.io.FileLoader;
 import hu.nye.wumpus.io.impl.BoardFileLoader;
 import hu.nye.wumpus.io.impl.HeroFileLoader;
@@ -16,7 +18,7 @@ public class GameManager {
     private Hero hero;
     private Board board;
 
-    public void startGame() throws IOException {
+    public void startGame() throws IOException, SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Kérem a felhasználónevet: ");
@@ -48,7 +50,8 @@ public class GameManager {
 
                 case "3":
                     System.out.println("Top lista (nincs implementálva)");
-                    //highScore();
+                    TopScore topScore = new TopScore();
+                    topScore.topScore();
                     break;
 
                 case "4":
