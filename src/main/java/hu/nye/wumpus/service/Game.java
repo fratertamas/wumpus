@@ -72,16 +72,23 @@ public class Game {
         int newRow;
         int newColumn;
         if (hero.getHeroDirection() == 'E') {
-            if (board.getBoard()[hero.getHeroRow() -1][hero.getHeroColumn() + 1] == 'W'){
+            if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'W') {
                 System.out.println("Fal jön, oda nem léphetsz!");
-            } else if (board.getBoard()[hero.getHeroRow() -1][hero.getHeroColumn() + 1] == 'P') {
-                if (hero.getNumberOfArrows() > 0){
-                    hero.setNumberOfArrows(hero.getNumberOfArrows()-1);
+            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'P') {
+                if (hero.getNumberOfArrows() > 0) {
+                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
                     hero.setHeroColumn(hero.getHeroColumn() + 1);
                     hero.setHeroRow(hero.getHeroRow());
-                }else{
+                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
+                } else {
                     System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
                 }
+            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'U') {
+                System.out.println("A WUMPUS megölt vége a játéknak!");
+            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'G') {
+                System.out.println("Felvetted az aranyat! Nyertél!");
+                hero.setHasGold(true);
+                //TOPSCORE
             } else {
                 newRow = hero.getHeroRow();
                 newColumn = hero.getHeroColumn() + 1;
@@ -90,28 +97,83 @@ public class Game {
                     hero.setHeroColumn(newColumn);
                 }
             }
-
-
         } else if (hero.getHeroDirection() == 'N') {
-            newRow = hero.getHeroRow() - 1;
-            newColumn = hero.getHeroColumn();
-            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                hero.setHeroRow(newRow);
-                hero.setHeroColumn(newColumn);
+            if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'W') {
+                System.out.println("Fal jön, oda nem léphetsz!");
+            } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'P') {
+                if (hero.getNumberOfArrows() > 0) {
+                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
+                    hero.setHeroColumn(hero.getHeroColumn());
+                    hero.setHeroRow(hero.getHeroRow() - 1);
+                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
+                } else {
+                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
+                }
+            } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'U') {
+                System.out.println("A WUMPUS megölt vége a játéknak!");
+            } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'G') {
+                System.out.println("Felvetted az aranyat! Nyertél!");
+                hero.setHasGold(true);
+                //TOPSCORE
+            } else {
+                newRow = hero.getHeroRow() - 1;
+                newColumn = hero.getHeroColumn();
+                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                    hero.setHeroRow(newRow);
+                    hero.setHeroColumn(newColumn);
+                }
             }
         } else if (hero.getHeroDirection() == 'W') {
-            newRow = hero.getHeroRow();
-            newColumn = hero.getHeroColumn() - 1;
-            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                hero.setHeroRow(newRow);
-                hero.setHeroColumn(newColumn);
+            if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'W') {
+                System.out.println("Fal jön, oda nem léphetsz!");
+            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'P') {
+                if (hero.getNumberOfArrows() > 0) {
+                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
+                    hero.setHeroColumn(hero.getHeroColumn() - 1);
+                    hero.setHeroRow(hero.getHeroRow());
+                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
+                } else {
+                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
+                }
+            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'U') {
+                System.out.println("A WUMPUS megölt vége a játéknak!");
+            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'G') {
+                System.out.println("Felvetted az aranyat! Nyertél!");
+                hero.setHasGold(true);
+                //TOPSCORE
+            } else {
+                newRow = hero.getHeroRow();
+                newColumn = hero.getHeroColumn() - 1;
+                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                    hero.setHeroRow(newRow);
+                    hero.setHeroColumn(newColumn);
+                }
             }
         } else if (hero.getHeroDirection() == 'S') {
-            newRow = hero.getHeroRow() + 1;
-            newColumn = hero.getHeroColumn();
-            if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                hero.setHeroRow(newRow);
-                hero.setHeroColumn(newColumn);
+            if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'W') {
+                System.out.println("Fal jön, oda nem léphetsz!");
+            } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'P') {
+                if (hero.getNumberOfArrows() > 0) {
+                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
+                    hero.setHeroColumn(hero.getHeroColumn());
+                    hero.setHeroRow(hero.getHeroRow() + 1);
+                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
+                } else {
+                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
+                }
+            } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'U') {
+                System.out.println("A WUMPUS megölt vége a játéknak!");
+            } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'G') {
+                System.out.println("Felvetted az aranyat! Nyertél!");
+                hero.setHasGold(true);
+                //TOPSCORE
+            } else {
+                newRow = hero.getHeroRow() + 1;
+                newColumn = hero.getHeroColumn();
+                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
+                    hero.setHeroRow(newRow);
+                    hero.setHeroColumn(newColumn);
+                }
             }
         }
     }

@@ -43,7 +43,7 @@ public class Hero {
         this.heroDirection = heroDirection;
     }
 
-    public boolean isHasGold() {
+    public boolean getHasGold() {
         return hasGold;
     }
 
