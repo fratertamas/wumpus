@@ -40,7 +40,7 @@ public class Game {
                     printHeroData();
                     break;
                 case 'S':
-                    //shoot();
+                    shoot();
                     break;
                 case 'Q':
                     System.out.println("Játék vége.");
@@ -52,6 +52,10 @@ public class Game {
             }
         } while (!heroWin && (Character.toUpperCase(action) != 'Q'));
 }
+
+    private static void shoot() {
+
+    }
 
     private static void printBoard() {
         int row = hero.getHeroRow()-1;
