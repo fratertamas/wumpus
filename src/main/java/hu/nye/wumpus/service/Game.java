@@ -99,10 +99,8 @@ public class Game {
                     }
                 }
             } else {
-                System.out.println("Nyílak mezői sorban a pozíciótól a végéig:");
                 for (int i = arrow.getArrowRow()-1; i < board.getSizeOfBoard(); i++){
                     field = board.getBoard()[i][arrow.getArrowColumn()];
-                    System.out.println(field);
                     if (field == 'W') {
                         hero.setNumberOfArrows(hero.getNumberOfArrows()-1);
                         System.out.println("A falat találtad el, elvesztettél egy nyílat!");
@@ -128,7 +126,6 @@ public class Game {
                 }else{
                     System.out.print(board.getBoard()[i][j]);
                 }
-
             }
             System.out.println();
         }
