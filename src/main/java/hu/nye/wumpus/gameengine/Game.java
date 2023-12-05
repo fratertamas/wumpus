@@ -1,10 +1,11 @@
 package hu.nye.wumpus.gameengine;
 
+import java.util.Scanner;
+
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 
-import java.util.Scanner;
 public class Game {
     private Board board;
     private Hero hero;
@@ -32,7 +33,7 @@ public class Game {
 
         boolean heroWin = false;
 
-        while (!heroWin && (Character.toUpperCase(action) != 'Q')){
+        while (!heroWin && (Character.toUpperCase(action) != 'Q')) {
             Menu.printGamePlayMenu();
             action = scanner.next().charAt(0);
 
@@ -89,12 +90,12 @@ public class Game {
     }
 
     private void printBoard() {
-        int row = hero.getHeroRow()-1;
+        int row = hero.getHeroRow() - 1;
         for (int i = 0; i < board.getSizeOfBoard(); i++) {
             for (int j = 0; j < board.getSizeOfBoard(); j++) {
-                if (j == hero.getHeroColumn() && i == row){
+                if (j == hero.getHeroColumn() && i == row) {
                     System.out.print('H');
-                }else{
+                } else {
                     System.out.print(board.getBoard()[i][j]);
                 }
             }
@@ -121,7 +122,7 @@ public class Game {
                 System.out.println("A WUMPUS megölt vége a játéknak!");
             } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
-                topScore+=arany;
+                topScore += arany;
                 hero.setHasGold(true);
             } else {
                 newRow = hero.getHeroRow();
@@ -148,7 +149,7 @@ public class Game {
             } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
                 hero.setHasGold(true);
-                topScore+=arany;
+                topScore += arany;
                 System.out.println("TOP SCORE: " + topScore);
             } else {
                 newRow = hero.getHeroRow() - 1;
@@ -175,7 +176,7 @@ public class Game {
             } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
                 hero.setHasGold(true);
-                topScore+=arany;
+                topScore += arany;
             } else {
                 newRow = hero.getHeroRow();
                 newColumn = hero.getHeroColumn() - 1;
@@ -225,7 +226,7 @@ public class Game {
         }
     }
 
-    private void printHeroData () {
+    private void printHeroData() {
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
         System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
         System.out.println("Hős iránya: " + hero.getHeroDirection());

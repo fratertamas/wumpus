@@ -1,12 +1,12 @@
 package hu.nye.wumpus.io.impl;
 
-import hu.nye.wumpus.io.FileLoader;
-import hu.nye.wumpus.model.Board;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
+
+import hu.nye.wumpus.io.FileLoader;
+import hu.nye.wumpus.model.Board;
 
 public class BoardFileLoader implements FileLoader {
 

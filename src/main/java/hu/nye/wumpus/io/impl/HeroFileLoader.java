@@ -1,12 +1,12 @@
 package hu.nye.wumpus.io.impl;
 
-import hu.nye.wumpus.io.FileLoader;
-import hu.nye.wumpus.model.Hero;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
+
+import hu.nye.wumpus.io.FileLoader;
+import hu.nye.wumpus.model.Hero;
 
 public class HeroFileLoader implements FileLoader {
     @Override

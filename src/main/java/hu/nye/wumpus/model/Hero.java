@@ -19,6 +19,13 @@ public class Hero {
 
     }
 
+    public Hero(int heroColumn, int heroRow, char heroDirection, boolean b) {
+        this.heroColumn = heroColumn;
+        this.heroRow = heroRow;
+        this.heroDirection = heroDirection;
+        this.hasGold = b;
+    }
+
     public int getHeroColumn() {
         return heroColumn;
     }

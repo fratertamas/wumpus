@@ -1,5 +1,8 @@
 package hu.nye.wumpus.gameengine;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 import hu.nye.wumpus.io.FileLoader;
 import hu.nye.wumpus.io.impl.BoardFileLoader;
 import hu.nye.wumpus.io.impl.HeroFileLoader;
@@ -7,9 +10,6 @@ import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
-
-import java.io.IOException;
-import java.util.Scanner;
 
 public class GameManager {
 

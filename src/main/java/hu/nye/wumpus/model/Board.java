@@ -16,7 +16,7 @@ public class Board {
         this.board = field;
     }
 
-    public char[][] getBoard(){
+    public char[][] getBoard() {
         return board;
     }
 }

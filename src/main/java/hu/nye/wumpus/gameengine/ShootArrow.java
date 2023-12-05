@@ -22,42 +22,42 @@ public class ShootArrow {
             char field;
             if (arrow.getArrowDirection() == 'E') {
                 for (int i = arrow.getArrowColumn(); i < board.getSizeOfBoard(); i++) {
-                    field = board.getBoard()[arrow.getArrowRow()-1][i];
+                    field = board.getBoard()[arrow.getArrowRow() - 1][i];
                     if (field == 'W') {
                         handleArrowShot.handleArrowShootWall();
-                    }else if(field == 'U') {
+                    } else if (field == 'U') {
                         handleArrowShot.handleArrowShootWumpus("Lelőtted a Wumpust, nyertél!");
                     }
                 }
-            }else if (arrow.getArrowDirection() == 'W') {
+            } else if (arrow.getArrowDirection() == 'W') {
                 for (int i = arrow.getArrowColumn(); i >= 0; i--) {
-                    field = board.getBoard()[arrow.getArrowRow()-1][i];
+                    field = board.getBoard()[arrow.getArrowRow() - 1][i];
                     if (field == 'W') {
                         handleArrowShot.handleArrowShootWall();
-                    }else if(field == 'U') {
+                    } else if (field == 'U') {
                         handleArrowShot.handleArrowShootWumpus("Lelőtted a Wumpust, nyertél!");
                     }
                 }
             } else if (arrow.getArrowDirection() == 'N') {
-                for (int i = arrow.getArrowRow()-1; i >= 0; i--){
+                for (int i = arrow.getArrowRow() - 1; i >= 0; i--) {
                     field = board.getBoard()[i][arrow.getArrowColumn()];
                     if (field == 'W') {
                         handleArrowShot.handleArrowShootWall();
-                    }else if(field == 'U') {
+                    } else if (field == 'U') {
                         handleArrowShot.handleArrowShootWumpus("Lelőtted a Wumpust, nyertél!");
                     }
                 }
             } else if (arrow.getArrowDirection() == 'S') {
-                for (int i = arrow.getArrowRow()-1; i < board.getSizeOfBoard(); i++){
+                for (int i = arrow.getArrowRow() - 1; i < board.getSizeOfBoard(); i++) {
                     field = board.getBoard()[i][arrow.getArrowColumn()];
                     if (field == 'W') {
                         handleArrowShot.handleArrowShootWall();
-                    }else if(field == 'U') {
+                    } else if (field == 'U') {
                         handleArrowShot.handleArrowShootWumpus("Lelőtted a Wumpust, nyertél!");
                     }
                 }
             }
-        }else{
+        } else {
             System.out.println("Nincs több nyilad, nem lőhetsz!");
         }
     }
