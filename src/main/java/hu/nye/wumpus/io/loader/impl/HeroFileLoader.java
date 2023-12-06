@@ -1,11 +1,11 @@
-package hu.nye.wumpus.io.impl;
+package hu.nye.wumpus.io.loader.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-import hu.nye.wumpus.io.FileLoader;
+import hu.nye.wumpus.io.loader.FileLoader;
 import hu.nye.wumpus.model.Hero;
 
 public class HeroFileLoader implements FileLoader {

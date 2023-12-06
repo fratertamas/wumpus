@@ -6,9 +6,9 @@ import java.util.Scanner;
 import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.database.TopScoreQuery;
-import hu.nye.wumpus.io.FileLoader;
-import hu.nye.wumpus.io.impl.BoardFileLoader;
-import hu.nye.wumpus.io.impl.HeroFileLoader;
+import hu.nye.wumpus.io.loader.FileLoader;
+import hu.nye.wumpus.io.loader.impl.BoardFileLoader;
+import hu.nye.wumpus.io.loader.impl.HeroFileLoader;
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;

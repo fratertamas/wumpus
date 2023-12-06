@@ -1,4 +1,4 @@
-package hu.nye.wumpus.serialization;
+package hu.nye.wumpus.io.saver;
 
 import java.io.IOException;
 import javax.xml.stream.XMLStreamException;

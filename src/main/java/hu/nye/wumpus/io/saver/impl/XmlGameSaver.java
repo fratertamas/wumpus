@@ -1,4 +1,4 @@
-package hu.nye.wumpus.serialization.impl;
+package hu.nye.wumpus.io.saver.impl;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 import hu.nye.wumpus.model.Player;
-import hu.nye.wumpus.serialization.GameSerializer;
+import hu.nye.wumpus.io.saver.GameSerializer;
 
 public class XmlGameSaver implements GameSerializer {
     @Override

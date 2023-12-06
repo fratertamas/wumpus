@@ -1,4 +1,4 @@
-package hu.nye.wumpus.io;
+package hu.nye.wumpus.io.loader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

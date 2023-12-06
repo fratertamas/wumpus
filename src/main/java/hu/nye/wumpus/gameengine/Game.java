@@ -10,8 +10,8 @@ import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
-import hu.nye.wumpus.serialization.impl.JsonGameSaver;
-import hu.nye.wumpus.serialization.impl.XmlGameSaver;
+import hu.nye.wumpus.io.saver.impl.JsonGameSaver;
+import hu.nye.wumpus.io.saver.impl.XmlGameSaver;
 import hu.nye.wumpus.utils.DisplayUtils;
 
 public class Game {
