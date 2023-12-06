@@ -3,6 +3,7 @@ package hu.nye.wumpus.gameengine;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
+import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.database.TopScoreQuery;
 import hu.nye.wumpus.io.FileLoader;
@@ -12,8 +13,6 @@ import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
-
-import javax.xml.stream.XMLStreamException;
 
 public class GameManager {
 

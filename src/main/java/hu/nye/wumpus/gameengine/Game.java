@@ -3,6 +3,7 @@ package hu.nye.wumpus.gameengine;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
+import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.database.GameQuery;
 import hu.nye.wumpus.menu.Menu;
@@ -11,8 +12,6 @@ import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 import hu.nye.wumpus.serialization.impl.JsonGameSaver;
 import hu.nye.wumpus.serialization.impl.XmlGameSaver;
-
-import javax.xml.stream.XMLStreamException;
 
 public class Game {
     private Board board;
@@ -67,8 +66,8 @@ public class Game {
                     shootArrow.shootArrow();
                     break;
                 case 'H':
-                    //dbGameSave();
-                    //jsonSave();
+                    dbGameSave();
+                    jsonSave();
                     xmlSave();
                     break;
                 case 'Q':

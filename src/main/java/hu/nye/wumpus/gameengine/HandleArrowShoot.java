@@ -19,6 +19,7 @@ public class HandleArrowShoot {
     }
 
     public void handleArrowShootWall() {
+        hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
         System.out.println("A falat találtad el, elvesztettél egy nyílat!");
         printHeroData();
         printBoard();
