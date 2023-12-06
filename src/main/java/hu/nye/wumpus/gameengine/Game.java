@@ -23,6 +23,7 @@ public class Game {
     private int playerScore;
     private static final int VALUE_OF_GOLD = 20;
     private Player player;
+    private HeroMovementHandler heroMovementHandler;
 
     public Game(Board board, Hero hero, Player player) {
         this.board = board;
@@ -32,13 +33,14 @@ public class Game {
         this.playerScore = 100;
         this.player = player;
         this.displayUtils = new DisplayUtils(board, hero);
+        this.heroMovementHandler = new HeroMovementHandler(player, hero, board);
     }
 
     public void playGame() throws SQLException, IOException, XMLStreamException {
 
         Scanner scanner = new Scanner(System.in);
 
-        hero.setNumberOfArrows(heroNumberInitialization(board));
+        hero.setNumberOfArrows(heroNumberOfArrowsInitialization(board));
 
         char action = 'X';
 
@@ -51,7 +53,8 @@ public class Game {
             switch (Character.toUpperCase(action)) {
                 case 'L':
                     playerScore--;
-                    moveHero();
+                    heroMovementHandler.moveHero(playerScore);
+                    //moveHero();
                     displayUtils.printHeroData();
                     displayUtils.printBoard();
                     break;
@@ -112,7 +115,7 @@ public class Game {
         return save;
     }
 
-    private int heroNumberInitialization(Board board) {
+    private int heroNumberOfArrowsInitialization(Board board) {
         int numberOfArrows = 0;
         for (int i = 0; i < board.getSizeOfBoard(); i++) {
             for (int j = 0; j < board.getSizeOfBoard(); j++) {
@@ -122,117 +125,6 @@ public class Game {
             }
         }
         return numberOfArrows;
-    }
-
-    private void moveHero() {
-        int newRow;
-        int newColumn;
-        if (hero.getHeroDirection() == 'E') {
-            if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'W') {
-                System.out.println("Fal jön, oda nem léphetsz!");
-            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'P') {
-                if (hero.getNumberOfArrows() > 0) {
-                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
-                    hero.setHeroColumn(hero.getHeroColumn() + 1);
-                    hero.setHeroRow(hero.getHeroRow());
-                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
-                } else {
-                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
-                }
-            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'U') {
-                System.out.println("A WUMPUS megölt vége a játéknak!");
-            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'G') {
-                System.out.println("Felvetted az aranyat! Nyertél!");
-                playerScore += VALUE_OF_GOLD;
-                hero.setHasGold(true);
-            } else {
-                newRow = hero.getHeroRow();
-                newColumn = hero.getHeroColumn() + 1;
-                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                    hero.setHeroRow(newRow);
-                    hero.setHeroColumn(newColumn);
-                }
-            }
-        } else if (hero.getHeroDirection() == 'N') {
-            if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'W') {
-                System.out.println("Fal jön, oda nem léphetsz!");
-            } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'P') {
-                if (hero.getNumberOfArrows() > 0) {
-                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
-                    hero.setHeroColumn(hero.getHeroColumn());
-                    hero.setHeroRow(hero.getHeroRow() - 1);
-                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
-                } else {
-                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
-                }
-            } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'U') {
-                System.out.println("A WUMPUS megölt vége a játéknak!");
-            } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'G') {
-                System.out.println("Felvetted az aranyat! Nyertél!");
-                hero.setHasGold(true);
-                playerScore += VALUE_OF_GOLD;
-                System.out.println("TOP SCORE: " + playerScore);
-            } else {
-                newRow = hero.getHeroRow() - 1;
-                newColumn = hero.getHeroColumn();
-                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                    hero.setHeroRow(newRow);
-                    hero.setHeroColumn(newColumn);
-                }
-            }
-        } else if (hero.getHeroDirection() == 'W') {
-            if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'W') {
-                System.out.println("Fal jön, oda nem léphetsz!");
-            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'P') {
-                if (hero.getNumberOfArrows() > 0) {
-                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
-                    hero.setHeroColumn(hero.getHeroColumn() - 1);
-                    hero.setHeroRow(hero.getHeroRow());
-                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
-                } else {
-                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
-                }
-            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'U') {
-                System.out.println("A WUMPUS megölt vége a játéknak!");
-            } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'G') {
-                System.out.println("Felvetted az aranyat! Nyertél!");
-                hero.setHasGold(true);
-                playerScore += VALUE_OF_GOLD;
-            } else {
-                newRow = hero.getHeroRow();
-                newColumn = hero.getHeroColumn() - 1;
-                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                    hero.setHeroRow(newRow);
-                    hero.setHeroColumn(newColumn);
-                }
-            }
-        } else if (hero.getHeroDirection() == 'S') {
-            if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'W') {
-                System.out.println("Fal jön, oda nem léphetsz!");
-            } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'P') {
-                if (hero.getNumberOfArrows() > 0) {
-                    hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
-                    hero.setHeroColumn(hero.getHeroColumn());
-                    hero.setHeroRow(hero.getHeroRow() + 1);
-                    System.out.println("Verembe léptél, elvesztettél egy nyilat!");
-                } else {
-                    System.out.println("Nincs több nyilad! Vesztettél! Vége a játéknak!");
-                }
-            } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'U') {
-                System.out.println("A WUMPUS megölt vége a játéknak!");
-            } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'G') {
-                System.out.println("Felvetted az aranyat! Nyertél!");
-                hero.setHasGold(true);
-                playerScore += VALUE_OF_GOLD;
-            } else {
-                newRow = hero.getHeroRow() + 1;
-                newColumn = hero.getHeroColumn();
-                if (newRow >= 0 && newRow < board.getSizeOfBoard() && newColumn >= 0 && newColumn < board.getSizeOfBoard()) {
-                    hero.setHeroRow(newRow);
-                    hero.setHeroColumn(newColumn);
-                }
-            }
-        }
     }
 
     private void turnHeroRight() {
