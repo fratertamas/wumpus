@@ -12,8 +12,10 @@ import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 import hu.nye.wumpus.serialization.impl.JsonGameSaver;
 import hu.nye.wumpus.serialization.impl.XmlGameSaver;
+import hu.nye.wumpus.utils.DisplayUtils;
 
 public class Game {
+    private final DisplayUtils displayUtils;
     private Board board;
     private Hero hero;
     private ShootArrow shootArrow;
@@ -29,6 +31,7 @@ public class Game {
         this.shootArrow = new ShootArrow(board, hero, handleArrowShot);
         this.playerScore = 100;
         this.player = player;
+        this.displayUtils = new DisplayUtils(board, hero);
     }
 
     public void playGame() throws SQLException, IOException, XMLStreamException {
@@ -49,18 +52,18 @@ public class Game {
                 case 'L':
                     playerScore--;
                     moveHero();
-                    printHeroData();
-                    printBoard();
+                    displayUtils.printHeroData();
+                    displayUtils.printBoard();
                     break;
                 case 'B':
                     playerScore--;
                     turnHeroLeft();
-                    printHeroData();
+                    displayUtils.printHeroData();
                     break;
                 case 'J':
                     playerScore--;
                     turnHeroRight();
-                    printHeroData();
+                    displayUtils.printHeroData();
                     break;
                 case 'S':
                     shootArrow.shootArrow();
@@ -119,25 +122,6 @@ public class Game {
             }
         }
         return numberOfArrows;
-    }
-
-    private void handleArrowShootWumpus(String message) {
-        hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
-        System.out.println(message);
-    }
-
-    private void printBoard() {
-        int row = hero.getHeroRow() - 1;
-        for (int i = 0; i < board.getSizeOfBoard(); i++) {
-            for (int j = 0; j < board.getSizeOfBoard(); j++) {
-                if (j == hero.getHeroColumn() && i == row) {
-                    System.out.print('H');
-                } else {
-                    System.out.print(board.getBoard()[i][j]);
-                }
-            }
-            System.out.println();
-        }
     }
 
     private void moveHero() {
@@ -261,13 +245,6 @@ public class Game {
         } else {
             hero.setHeroDirection('E');
         }
-    }
-
-    private void printHeroData() {
-        System.out.println("Pálya mérete: " + board.getSizeOfBoard());
-        System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
-        System.out.println("Hős iránya: " + hero.getHeroDirection());
-        System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
     }
 
     private void turnHeroLeft() {

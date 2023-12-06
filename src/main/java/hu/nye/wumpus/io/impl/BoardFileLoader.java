@@ -29,9 +29,7 @@ public class BoardFileLoader implements FileLoader {
         //A pálya elemei
         createBoard(board, board.getSizeOfBoard(), scanner);
 
-
         scanner.close();
-
 
         return board;
     }

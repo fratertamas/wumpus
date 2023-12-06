@@ -2,15 +2,18 @@ package hu.nye.wumpus.gameengine;
 
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
+import hu.nye.wumpus.utils.DisplayUtils;
 
 public class HandleArrowShoot {
 
     private Hero hero;
     private Board board;
+    private DisplayUtils displayUtils;
 
     public HandleArrowShoot(Board board, Hero hero) {
         this.board = board;
         this.hero = hero;
+        this.displayUtils = new DisplayUtils(board, hero);
     }
 
     public void handleArrowShootWumpus(String message) {
@@ -21,28 +24,7 @@ public class HandleArrowShoot {
     public void handleArrowShootWall() {
         hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
         System.out.println("A falat találtad el, elvesztettél egy nyílat!");
-        printHeroData();
-        printBoard();
-    }
-
-    private void printBoard() {
-        int row = hero.getHeroRow() - 1;
-        for (int i = 0; i < board.getSizeOfBoard(); i++) {
-            for (int j = 0; j < board.getSizeOfBoard(); j++) {
-                if (j == hero.getHeroColumn() && i == row) {
-                    System.out.print('H');
-                } else {
-                    System.out.print(board.getBoard()[i][j]);
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    private void printHeroData() {
-        System.out.println("Pálya mérete: " + board.getSizeOfBoard());
-        System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
-        System.out.println("Hős iránya: " + hero.getHeroDirection());
-        System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
+        displayUtils.printHeroData();
+        displayUtils.printBoard();
     }
 }
