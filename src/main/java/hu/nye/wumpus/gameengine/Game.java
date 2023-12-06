@@ -10,6 +10,9 @@ import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 import hu.nye.wumpus.serialization.impl.JsonGameSaver;
+import hu.nye.wumpus.serialization.impl.XmlGameSaver;
+
+import javax.xml.stream.XMLStreamException;
 
 public class Game {
     private Board board;
@@ -29,7 +32,7 @@ public class Game {
         this.player = player;
     }
 
-    public void playGame() throws SQLException, IOException {
+    public void playGame() throws SQLException, IOException, XMLStreamException {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -64,8 +67,9 @@ public class Game {
                     shootArrow.shootArrow();
                     break;
                 case 'H':
-                    dbGameSave();
-                    jsonSave();
+                    //dbGameSave();
+                    //jsonSave();
+                    xmlSave();
                     break;
                 case 'Q':
                     System.out.println("Játék vége.");
@@ -74,6 +78,11 @@ public class Game {
                     System.out.println("Érvénytelen akció. Kérem, válasszon újra.");
             }
         }
+    }
+
+    private void xmlSave() throws XMLStreamException, IOException {
+        XmlGameSaver xmlGameSaver = new XmlGameSaver();
+        xmlGameSaver.saveGame(player, createSaveString(), playerScore);
     }
 
     private void jsonSave() throws IOException {

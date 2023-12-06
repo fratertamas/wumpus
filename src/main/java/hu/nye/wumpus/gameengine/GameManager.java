@@ -13,12 +13,14 @@ import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 
+import javax.xml.stream.XMLStreamException;
+
 public class GameManager {
 
     private Hero hero;
     private Board board;
 
-    public void startGame() throws IOException, SQLException {
+    public void startGame() throws IOException, SQLException, XMLStreamException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Kérem a felhasználónevet: ");
