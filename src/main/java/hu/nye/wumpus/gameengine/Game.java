@@ -64,7 +64,7 @@ public class Game {
                     shootArrow.shootArrow();
                     break;
                 case 'H':
-                    //gameSave();
+                    dbGameSave();
                     jsonSave();
                     break;
                 case 'Q':
@@ -81,7 +81,7 @@ public class Game {
         jsonGameSaver.saveGame(player, createSaveString(), playerScore);
     }
 
-    private void gameSave() throws SQLException {
+    private void dbGameSave() throws SQLException {
         String save = createSaveString();
 
         GameQuery gameQuery = new GameQuery();
@@ -116,12 +116,6 @@ public class Game {
     private void handleArrowShootWumpus(String message) {
         hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
         System.out.println(message);
-    }
-
-    private void handleArrowShootWall() {
-        handleArrowShootWumpus("A falat találtad el, elvesztettél egy nyílat!");
-        printHeroData();
-        printBoard();
     }
 
     private void printBoard() {
@@ -266,7 +260,6 @@ public class Game {
         System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
         System.out.println("Hős iránya: " + hero.getHeroDirection());
         System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
-
     }
 
     private void turnHeroLeft() {

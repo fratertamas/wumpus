@@ -12,31 +12,7 @@ public class GameSave {
         this.playerScore = playerScore;
     }
 
-    // Getterek és setterek
 
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
-    public String getGameData() {
-        return gameData;
-    }
-
-    public void setGameData(String gameData) {
-        this.gameData = gameData;
-    }
-
-    public int getPlayerScore() {
-        return playerScore;
-    }
-
-    public void setPlayerScore(int playerScore) {
-        this.playerScore = playerScore;
-    }
 
     @Override
     public String toString() {

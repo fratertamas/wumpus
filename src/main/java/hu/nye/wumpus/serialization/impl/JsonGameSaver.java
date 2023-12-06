@@ -1,12 +1,12 @@
 package hu.nye.wumpus.serialization.impl;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import com.google.gson.Gson;
 import hu.nye.wumpus.model.GameSave;
 import hu.nye.wumpus.model.Player;
 import hu.nye.wumpus.serialization.GameSerializer;
-
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class JsonGameSaver implements GameSerializer {
     @Override
