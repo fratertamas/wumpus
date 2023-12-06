@@ -1,11 +1,11 @@
 package hu.nye.wumpus.database;
 
-import hu.nye.wumpus.model.Player;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import hu.nye.wumpus.model.Player;
 
 public class TopScoreQuery {
 

@@ -1,10 +1,10 @@
 package hu.nye.wumpus.gameengine;
 
+import java.sql.SQLException;
+
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
-
-import java.sql.SQLException;
 
 public class HeroMovementHandler {
     private Board board;
@@ -23,7 +23,6 @@ public class HeroMovementHandler {
 
         char direction = hero.getHeroDirection();
         char targetCell = getTargetCell(direction);
-        System.out.println("TargetCell: " + targetCell);
 
         if (targetCell == 'W') {
             System.out.println("Fal jön, oda nem léphetsz!");
@@ -63,8 +62,9 @@ public class HeroMovementHandler {
                 columnChange = -1;
                 break;
             case 'S':
-                rowChange = 0;//-1;
+                rowChange = 1;
                 break;
+            default:
         }
         int targetRow = hero.getHeroRow() + rowChange;
         int targetColumn = hero.getHeroColumn() + columnChange;
@@ -89,6 +89,7 @@ public class HeroMovementHandler {
             case 'S':
                 rowChange = 1;
                 break;
+            default:
         }
 
         hero.setHeroRow(hero.getHeroRow() + rowChange);
@@ -109,7 +110,7 @@ public class HeroMovementHandler {
             } else if (direction == 'N') {
                 newHeroPozition(-1, 0);
             } else {
-                newHeroPozition(1,0);
+                newHeroPozition(1, 0);
             }
             System.out.println("Verembe léptél, elvesztettél egy nyilat!");
         } else {
