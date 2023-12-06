@@ -49,7 +49,7 @@ public class GameManager {
                     break;
 
                 case "3":
-                    System.out.println("Top lista (nincs implementálva)");
+                    System.out.println("Top lista");
                     TopScoreQuery topScoreQuery = new TopScoreQuery();
                     topScoreQuery.getTopScore();
                     break;
