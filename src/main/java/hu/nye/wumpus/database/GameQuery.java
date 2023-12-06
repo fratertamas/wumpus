@@ -1,10 +1,10 @@
 package hu.nye.wumpus.database;
 
-import hu.nye.wumpus.model.Player;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import hu.nye.wumpus.model.Player;
 
 public class GameQuery {
     public void saveGame(Player player, String save, int playerScore) throws SQLException {
