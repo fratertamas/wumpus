@@ -1,17 +1,22 @@
 package hu.nye.wumpus.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TopScore {
+public class TopScoreQuery {
 
-    public void topScore() throws SQLException {
+    public void getTopScore() throws SQLException {
         // Get a connection to the database
         Connection connection = DatabaseConnection.getConnection();
 
         // Execute a query
-        ResultSet resultSet = connection.createStatement().executeQuery("SELECT player, score FROM topscore");
+        String query = "SELECT player, score FROM topscore";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+        /// Execute the prepared statement
+        ResultSet resultSet = preparedStatement.executeQuery();
 
         // Iterate over the results
         while (resultSet.next()) {
@@ -21,6 +26,10 @@ public class TopScore {
             // Print the results
             System.out.println("Player: " + player + ", Score: " + score);
         }
+
+        // Close the prepared statement
+        resultSet.close();
+        preparedStatement.close();
 
         // Close the connection
         connection.close();

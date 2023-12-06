@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import hu.nye.wumpus.database.TopScore;
+import hu.nye.wumpus.database.TopScoreQuery;
 import hu.nye.wumpus.io.FileLoader;
 import hu.nye.wumpus.io.impl.BoardFileLoader;
 import hu.nye.wumpus.io.impl.HeroFileLoader;
@@ -50,12 +50,12 @@ public class GameManager {
 
                 case "3":
                     System.out.println("Top lista (nincs implementálva)");
-                    TopScore topScore = new TopScore();
-                    topScore.topScore();
+                    TopScoreQuery topScoreQuery = new TopScoreQuery();
+                    topScoreQuery.getTopScore();
                     break;
 
                 case "4":
-                    Game game = new Game(board, hero);
+                    Game game = new Game(board, hero, player);
                     game.playGame();
                     break;
 

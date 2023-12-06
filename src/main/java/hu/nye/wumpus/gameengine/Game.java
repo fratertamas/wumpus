@@ -1,29 +1,34 @@
 package hu.nye.wumpus.gameengine;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import hu.nye.wumpus.database.GameQuery;
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
+import hu.nye.wumpus.model.Player;
 
 public class Game {
     private Board board;
     private Hero hero;
     private ShootArrow shootArrow;
     private HandleArrowShoot handleArrowShot;
-    private int topScore;
-    private int arany;
+    private int playerScore;
+    private final int ARANY;
+    private Player player;
 
-    public Game(Board board, Hero hero) {
+    public Game(Board board, Hero hero, Player player) {
         this.board = board;
         this.hero = hero;
         this.handleArrowShot = new HandleArrowShoot(board, hero);
         this.shootArrow = new ShootArrow(board, hero, handleArrowShot);
-        this.topScore = 100;
-        this.arany = 20;
+        this.playerScore = 100;
+        this.ARANY = 20;
+        this.player = player;
     }
 
-    public void playGame() {
+    public void playGame() throws SQLException {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,23 +44,26 @@ public class Game {
 
             switch (Character.toUpperCase(action)) {
                 case 'L':
-                    topScore--;
+                    playerScore--;
                     moveHero();
                     printHeroData();
                     printBoard();
                     break;
                 case 'B':
-                    topScore--;
+                    playerScore--;
                     turnHeroLeft();
                     printHeroData();
                     break;
                 case 'J':
-                    topScore--;
+                    playerScore--;
                     turnHeroRight();
                     printHeroData();
                     break;
                 case 'S':
                     shootArrow.shootArrow();
+                    break;
+                case 'H':
+                    gameSave();
                     break;
                 case 'Q':
                     System.out.println("Játék vége.");
@@ -64,6 +72,21 @@ public class Game {
                     System.out.println("Érvénytelen akció. Kérem, válasszon újra.");
             }
         }
+    }
+
+    private void gameSave() throws SQLException {
+        String save = "";
+        save += board.getSizeOfBoard() + " ";
+        save += (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow() + " " + hero.getHeroDirection();
+        for (int i = 0; i < board.getSizeOfBoard(); i++) {
+            save += " ";
+            for (int j = 0; j < board.getSizeOfBoard(); j++) {
+                save += board.getBoard()[i][j];
+            }
+        }
+
+        GameQuery gameQuery = new GameQuery();
+        gameQuery.saveGame(player, save, playerScore);
     }
 
     private int heroNumberInitialization(Board board) {
@@ -122,7 +145,7 @@ public class Game {
                 System.out.println("A WUMPUS megölt vége a játéknak!");
             } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() + 1] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
-                topScore += arany;
+                playerScore += ARANY;
                 hero.setHasGold(true);
             } else {
                 newRow = hero.getHeroRow();
@@ -149,8 +172,8 @@ public class Game {
             } else if (board.getBoard()[hero.getHeroRow() - 2][hero.getHeroColumn()] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
                 hero.setHasGold(true);
-                topScore += arany;
-                System.out.println("TOP SCORE: " + topScore);
+                playerScore += ARANY;
+                System.out.println("TOP SCORE: " + playerScore);
             } else {
                 newRow = hero.getHeroRow() - 1;
                 newColumn = hero.getHeroColumn();
@@ -176,7 +199,7 @@ public class Game {
             } else if (board.getBoard()[hero.getHeroRow() - 1][hero.getHeroColumn() - 1] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
                 hero.setHasGold(true);
-                topScore += arany;
+                playerScore += ARANY;
             } else {
                 newRow = hero.getHeroRow();
                 newColumn = hero.getHeroColumn() - 1;
@@ -202,7 +225,7 @@ public class Game {
             } else if (board.getBoard()[hero.getHeroRow()][hero.getHeroColumn()] == 'G') {
                 System.out.println("Felvetted az aranyat! Nyertél!");
                 hero.setHasGold(true);
-                topScore += arany;
+                playerScore += ARANY;
             } else {
                 newRow = hero.getHeroRow() + 1;
                 newColumn = hero.getHeroColumn();

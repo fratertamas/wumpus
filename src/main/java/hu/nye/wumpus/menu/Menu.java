@@ -17,6 +17,7 @@ public class Menu {
                 "B - fordulás balra\n" +
                 "J - fordulás jobbra\n" +
                 "S - lövés\n" +
+                "H - halaszt\n" +
                 "Q - kilépés");
     }
 }
