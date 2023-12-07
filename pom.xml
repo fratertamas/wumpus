@@ -24,11 +24,18 @@
         <!-- Junit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter-engine-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit-jupiter-engine-version}</version>
             <scope>test</scope>
         </dependency>
 
+        <!--Mockito-->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -36,7 +43,7 @@
             <scope>test</scope>
         </dependency>
 
-
+        <!--MySQL connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -80,6 +87,19 @@
                 </executions>
             </plugin>
 
+            <!-- Surefire -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.1</version>
+            </plugin>
+
             <!-- Jacoco -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -96,6 +116,12 @@
                     <excludes>
                         <exclude>hu/nye/wumpus/model/*</exclude>
                         <exclude>hu/nye/wumpus/GameMain.*</exclude>
+                        <exclude>hu/nye/wumpus/menu/*</exclude>
+                        <exclude>hu/nye/wumpus/io/**/*</exclude>
+                        <exclude>hu/nye/wumpus/database/*</exclude>
+                        <exclude>hu/nye/wumpus/gameengine/GameManager.*</exclude>
+
+                        <exclude>hu/nye/wumpus/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
