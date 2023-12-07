@@ -41,7 +41,7 @@ public class ShootArrow {
             } else if (arrow.getArrowDirection() == 'W') {
                 for (int i = arrow.getArrowColumn(); i >= 0; i--) {
                     field = board.getBoard()[arrow.getArrowRow()][i];
-                    foundTarget =checkArrowTarget(field, foundTarget);
+                    foundTarget = checkArrowTarget(field, foundTarget);
                 }
             } else if (arrow.getArrowDirection() == 'N') {
                 for (int i = arrow.getArrowRow(); i >= 0; i--) {
@@ -65,7 +65,7 @@ public class ShootArrow {
     }
 
     private boolean checkArrowTarget(char field, boolean foundTarget) {
-        if (field == 'U'){
+        if (field == 'U') {
             foundTarget = true;
         }
         return foundTarget;
