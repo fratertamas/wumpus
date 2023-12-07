@@ -6,6 +6,7 @@ import hu.nye.wumpus.model.Hero;
 
 public class ShootArrow {
 
+    private Arrow arrow;
     private Board board;
     private Hero hero;
     private HandleArrowShoot handleArrowShot;
@@ -13,12 +14,12 @@ public class ShootArrow {
     public ShootArrow(Board board, Hero hero, HandleArrowShoot handleArrowShot) {
         this.board = board;
         this.hero = hero;
+        this.arrow =  new Arrow(hero.getHeroRow(), hero.getHeroColumn(), hero.getHeroDirection());
         this.handleArrowShot = handleArrowShot;
     }
 
     public void shootArrow() {
         if (hero.getNumberOfArrows() > 0) {
-            Arrow arrow = new Arrow(hero.getHeroRow(), hero.getHeroColumn(), hero.getHeroDirection());
             char field;
             if (arrow.getArrowDirection() == 'E') {
                 for (int i = arrow.getArrowColumn(); i < board.getSizeOfBoard(); i++) {

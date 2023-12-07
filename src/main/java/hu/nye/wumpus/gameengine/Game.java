@@ -21,9 +21,9 @@ public class Game {
     private ShootArrow shootArrow;
     private HandleArrowShoot handleArrowShot;
     private int playerScore;
-    private static final int VALUE_OF_GOLD = 20;
     private Player player;
     private HeroMovementHandler heroMovementHandler;
+    private Turn turnHero;
 
     public Game(Board board, Hero hero, Player player) {
         this.board = board;
@@ -34,6 +34,7 @@ public class Game {
         this.player = player;
         this.displayUtils = new DisplayUtils(board, hero);
         this.heroMovementHandler = new HeroMovementHandler(player, hero, board);
+        this.turnHero = new Turn(hero);
     }
 
     public Game(Board board, Hero hero, Player player, int score) {
@@ -45,6 +46,7 @@ public class Game {
         this.player = player;
         this.displayUtils = new DisplayUtils(board, hero);
         this.heroMovementHandler = new HeroMovementHandler(player, hero, board);
+        this.turnHero = new Turn(hero);
     }
 
     public void playGame() throws SQLException, IOException, XMLStreamException {
@@ -65,19 +67,20 @@ public class Game {
                 case 'L':
                     playerScore--;
                     heroMovementHandler.moveHero(playerScore);
-                    //moveHero();
                     displayUtils.printHeroData();
                     displayUtils.printBoard();
                     break;
                 case 'B':
                     playerScore--;
-                    turnHeroLeft();
+                    hero.setHeroDirection(turnHero.turnHeroLeft());
                     displayUtils.printHeroData();
+                    displayUtils.printBoard();
                     break;
                 case 'J':
                     playerScore--;
-                    turnHeroRight();
+                    hero.setHeroDirection(turnHero.turnHeroRight());
                     displayUtils.printHeroData();
+                    displayUtils.printBoard();
                     break;
                 case 'S':
                     shootArrow.shootArrow();
@@ -136,29 +139,5 @@ public class Game {
             }
         }
         return numberOfArrows;
-    }
-
-    private void turnHeroRight() {
-        if (hero.getHeroDirection() == 'E') {
-            hero.setHeroDirection('S');
-        } else if (hero.getHeroDirection() == 'S') {
-            hero.setHeroDirection('W');
-        } else if (hero.getHeroDirection() == 'W') {
-            hero.setHeroDirection('N');
-        } else {
-            hero.setHeroDirection('E');
-        }
-    }
-
-    private void turnHeroLeft() {
-        if (hero.getHeroDirection() == 'E') {
-            hero.setHeroDirection('N');
-        } else if (hero.getHeroDirection() == 'N') {
-            hero.setHeroDirection('W');
-        } else if (hero.getHeroDirection() == 'W') {
-            hero.setHeroDirection('S');
-        } else {
-            hero.setHeroDirection('E');
-        }
     }
 }
