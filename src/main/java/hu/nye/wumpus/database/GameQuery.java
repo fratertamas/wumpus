@@ -16,8 +16,6 @@ import hu.nye.wumpus.model.Player;
 
 public class GameQuery {
     public void saveGame(Player player, String save, int playerScore) throws SQLException {
-        System.out.println("Player: " + player.getPlayerName() + "\n" +
-                save);
         // Get a connection to the database
         Connection connection = DatabaseConnection.getConnection();
 
@@ -42,7 +40,7 @@ public class GameQuery {
         Connection connection = DatabaseConnection.getConnection();
 
         // Execute a query
-        String query = "SELECT * FROM games";
+        String query = "SELECT gameid, player, score  FROM games";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
 
         /// Execute the prepared statement
@@ -51,7 +49,7 @@ public class GameQuery {
         while (resultSet.next()) {
             int gameId = resultSet.getInt("gameid");
             String player = resultSet.getString("player");
-            String board = resultSet.getString("game");
+            //String board = resultSet.getString("game");
             int score = resultSet.getInt("score");
 
             // Print the results
