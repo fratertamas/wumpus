@@ -6,10 +6,10 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import hu.nye.wumpus.io.saver.GameSaver;
 import hu.nye.wumpus.model.Player;
-import hu.nye.wumpus.io.saver.GameSerializer;
 
-public class XmlGameSaver implements GameSerializer {
+public class XmlGameSaver implements GameSaver {
     @Override
     public void saveGame(Player player, String save, int playerScore) throws IOException, XMLStreamException {
         XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();

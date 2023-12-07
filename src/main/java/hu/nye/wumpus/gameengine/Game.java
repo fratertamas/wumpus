@@ -6,12 +6,12 @@ import java.util.Scanner;
 import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.database.GameQuery;
+import hu.nye.wumpus.io.saver.impl.JsonGameSaver;
+import hu.nye.wumpus.io.saver.impl.XmlGameSaver;
 import hu.nye.wumpus.menu.Menu;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
-import hu.nye.wumpus.io.saver.impl.JsonGameSaver;
-import hu.nye.wumpus.io.saver.impl.XmlGameSaver;
 import hu.nye.wumpus.utils.DisplayUtils;
 
 public class Game {
@@ -31,6 +31,17 @@ public class Game {
         this.handleArrowShot = new HandleArrowShoot(board, hero);
         this.shootArrow = new ShootArrow(board, hero, handleArrowShot);
         this.playerScore = 100;
+        this.player = player;
+        this.displayUtils = new DisplayUtils(board, hero);
+        this.heroMovementHandler = new HeroMovementHandler(player, hero, board);
+    }
+
+    public Game(Board board, Hero hero, Player player, int score) {
+        this.board = board;
+        this.hero = hero;
+        this.handleArrowShot = new HandleArrowShoot(board, hero);
+        this.shootArrow = new ShootArrow(board, hero, handleArrowShot);
+        this.playerScore = score;
         this.player = player;
         this.displayUtils = new DisplayUtils(board, hero);
         this.heroMovementHandler = new HeroMovementHandler(player, hero, board);

@@ -6,6 +6,7 @@ import java.util.Scanner;
 import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.database.TopScoreQuery;
+import hu.nye.wumpus.io.loader.DBLoader;
 import hu.nye.wumpus.io.loader.FileLoader;
 import hu.nye.wumpus.io.loader.impl.BoardFileLoader;
 import hu.nye.wumpus.io.loader.impl.HeroFileLoader;
@@ -46,7 +47,8 @@ public class GameManager {
 
                 case "2":
                     System.out.println("Adatbázisból betöltés (nincs implementálva)");
-                    //loadFromDatabase();
+                    DBLoader dbLoader = new DBLoader();
+                    dbLoader.loadDataFromDatabase();
                     break;
 
                 case "3":

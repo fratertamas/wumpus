@@ -4,11 +4,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import hu.nye.wumpus.io.saver.GameSaver;
 import hu.nye.wumpus.model.GameSave;
 import hu.nye.wumpus.model.Player;
-import hu.nye.wumpus.io.saver.GameSerializer;
 
-public class JsonGameSaver implements GameSerializer {
+
+public class JsonGameSaver implements GameSaver {
     @Override
     public void saveGame(Player player, String save, int playerScore) throws IOException {
         String jsonSave = convertToJson(player, save, playerScore);
