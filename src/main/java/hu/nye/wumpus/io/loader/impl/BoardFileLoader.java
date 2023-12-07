@@ -8,6 +8,10 @@ import java.util.Scanner;
 import hu.nye.wumpus.io.loader.FileLoader;
 import hu.nye.wumpus.model.Board;
 
+/**
+ * BoardFileLoader.
+ * Pálya betöltés fájlból
+ */
 public class BoardFileLoader implements FileLoader {
 
     @Override

@@ -1,5 +1,9 @@
 package hu.nye.wumpus.model;
 
+/**
+ * Board.
+ * Játéktér
+ */
 public class Board {
     private int sizeOfBoard;
     private char[][] board;

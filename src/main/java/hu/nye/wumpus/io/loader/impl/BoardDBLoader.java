@@ -5,6 +5,10 @@ import java.util.Scanner;
 import hu.nye.wumpus.io.loader.FileLoader;
 import hu.nye.wumpus.model.Board;
 
+/**
+ * BoardDBLoader.
+ * Pálya betöltés db-ből
+ */
 public class BoardDBLoader implements FileLoader {
     @Override
     public Board load(String gameState) {

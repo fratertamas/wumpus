@@ -3,6 +3,10 @@ package hu.nye.wumpus.utils;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 
+/**
+ * DisplayUtils.
+ * Játék megjelenítés
+ */
 public class DisplayUtils {
     private final Board board;
     private final Hero hero;
@@ -12,6 +16,10 @@ public class DisplayUtils {
         this.hero = hero;
     }
 
+    /**
+     * printBoard.
+     * Játéktér kiírása
+     */
     public void printBoard() {
         int row = hero.getHeroRow() - 1;
         for (int i = 0; i < board.getSizeOfBoard(); i++) {
@@ -26,6 +34,10 @@ public class DisplayUtils {
         }
     }
 
+    /**
+     * printHeroData.
+     * Hős adatainak kiírása
+     */
     public void printHeroData() {
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
         System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());

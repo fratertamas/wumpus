@@ -6,6 +6,10 @@ import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 
+/**
+ * HeroMoveHandler.
+ * Hős helyváltoztatásának a kezelése
+ */
 public class HeroMovementHandler {
     private Board board;
     private Hero hero;
@@ -17,6 +21,10 @@ public class HeroMovementHandler {
         this.player = player;
     }
 
+    /**
+     * moveHero.
+     * Hős helyváltoztatása
+     */
     public void moveHero(int playerScore) throws SQLException {
         int newRow = hero.getHeroRow();
         int newColumn = hero.getHeroColumn();

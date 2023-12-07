@@ -8,7 +8,10 @@ import hu.nye.wumpus.io.saver.GameSaver;
 import hu.nye.wumpus.model.GameSave;
 import hu.nye.wumpus.model.Player;
 
-
+/**
+ * JSONGameSaver.
+ * Mentés JSON-ba
+ */
 public class JsonGameSaver implements GameSaver {
     @Override
     public void saveGame(Player player, String save, int playerScore) throws IOException {

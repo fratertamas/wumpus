@@ -1,7 +1,10 @@
 package hu.nye.wumpus.model;
 
+/**
+ * GameSave.
+ * Mentésre készült adatgyűjtő
+ */
 public class GameSave {
-
     private String playerName;
     private String gameData;
     private int playerScore;

@@ -1,5 +1,9 @@
 package hu.nye.wumpus.model;
 
+/**
+ * Arrow.
+ * Nyíl
+ */
 public class Arrow {
     private int arrowRow;
     private int arrowColumn;

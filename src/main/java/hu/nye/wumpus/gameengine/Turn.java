@@ -2,6 +2,10 @@ package hu.nye.wumpus.gameengine;
 
 import hu.nye.wumpus.model.Hero;
 
+/**
+ * Turn.
+ * Fodulási események
+ */
 public class Turn {
     private Hero hero;
 
@@ -9,6 +13,10 @@ public class Turn {
         this.hero = hero;
     }
 
+    /**
+     * turmHerpRight.
+     * A hős jobbra fordulása
+     */
     public char turnHeroRight() {
         if (hero.getHeroDirection() == 'E') {
             return 'S';
@@ -21,6 +29,10 @@ public class Turn {
         }
     }
 
+    /**
+     * turnHeroLeft.
+     * A hős balra fordulása
+     */
     public char turnHeroLeft() {
         if (hero.getHeroDirection() == 'E') {
             return 'N';

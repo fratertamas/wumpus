@@ -15,11 +15,18 @@ import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 
+/**
+ * GameManager.
+ * Controller
+ */
 public class GameManager {
-
     private Hero hero;
     private Board board;
 
+    /**
+     * startGame.
+     * Controller
+     */
     public void startGame() throws IOException, SQLException, XMLStreamException {
         Scanner scanner = new Scanner(System.in);
 

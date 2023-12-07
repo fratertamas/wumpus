@@ -4,6 +4,10 @@ import hu.nye.wumpus.model.Arrow;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 
+/**
+ * ShootArrow.
+ * Lövés
+ */
 public class ShootArrow {
 
     private Arrow arrow;
@@ -18,6 +22,10 @@ public class ShootArrow {
         this.handleArrowShot = handleArrowShot;
     }
 
+    /**
+     * shootArrow.
+     * lövés
+     */
     public void shootArrow() {
         if (hero.getNumberOfArrows() > 0) {
             char field;

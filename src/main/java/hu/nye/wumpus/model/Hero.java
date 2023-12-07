@@ -1,5 +1,9 @@
 package hu.nye.wumpus.model;
 
+/**
+ * Hero.
+ * Hős objektum
+ */
 public class Hero {
     private int heroColumn;
     private int heroRow;

@@ -8,6 +8,10 @@ import java.util.Scanner;
 import hu.nye.wumpus.io.loader.FileLoader;
 import hu.nye.wumpus.model.Hero;
 
+/**
+ * HeroFileLoader.
+ * Hős betöltése fájlból
+ */
 public class HeroFileLoader implements FileLoader {
     @Override
     public Hero load(String fileName) throws IOException {

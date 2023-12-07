@@ -14,6 +14,10 @@ import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
 import hu.nye.wumpus.utils.DisplayUtils;
 
+/**
+ * Game.
+ * Játék fő osztálya
+ */
 public class Game {
     private final DisplayUtils displayUtils;
     private Board board;
@@ -25,6 +29,10 @@ public class Game {
     private HeroMovementHandler heroMovementHandler;
     private Turn turnHero;
 
+    /**
+     * Game.
+     * Konstruktor 1
+     */
     public Game(Board board, Hero hero, Player player) {
         this.board = board;
         this.hero = hero;
@@ -37,6 +45,10 @@ public class Game {
         this.turnHero = new Turn(hero);
     }
 
+    /**
+     * Game.
+     * Kontstruktor 2
+     */
     public Game(Board board, Hero hero, Player player, int score) {
         this.board = board;
         this.hero = hero;
@@ -49,6 +61,10 @@ public class Game {
         this.turnHero = new Turn(hero);
     }
 
+    /**
+     * PlayGame.
+     * Játék indítása
+     */
     public void playGame() throws SQLException, IOException, XMLStreamException {
 
         Scanner scanner = new Scanner(System.in);

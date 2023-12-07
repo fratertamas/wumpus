@@ -1,5 +1,9 @@
 package hu.nye.wumpus.model;
 
+/**
+ * Player.
+ * Játékos objektum
+ */
 public class Player {
     private final String playerName;
 

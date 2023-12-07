@@ -7,8 +7,16 @@ import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.database.GameQuery;
 
+/**
+ * DBLoader.
+ * Adatbázis betöltés kezelése
+ */
 public class DBLoader {
 
+    /**
+     * loadDataFromDatabase.
+     * Adatbázisból betöltés
+     */
     public void loadDataFromDatabase() throws SQLException, XMLStreamException, IOException {
         GameQuery gameQuery = new GameQuery();
         gameQuery.listSavedGames();

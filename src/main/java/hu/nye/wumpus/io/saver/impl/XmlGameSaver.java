@@ -9,6 +9,10 @@ import javax.xml.stream.XMLStreamWriter;
 import hu.nye.wumpus.io.saver.GameSaver;
 import hu.nye.wumpus.model.Player;
 
+/**
+ * XMLGameSaver.
+ * JAXB helyett Stax-el megvalósítva
+ */
 public class XmlGameSaver implements GameSaver {
     @Override
     public void saveGame(Player player, String save, int playerScore) throws IOException, XMLStreamException {

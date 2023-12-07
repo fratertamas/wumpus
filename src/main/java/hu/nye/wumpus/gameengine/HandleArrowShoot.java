@@ -4,15 +4,15 @@ import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.utils.DisplayUtils;
 
-import java.util.logging.Logger;
-
+/**
+ * HandleArrowShoot.
+ * Myíl eseményeinek kezelése
+ */
 public class HandleArrowShoot {
 
     private Hero hero;
     private Board board;
     private DisplayUtils displayUtils;
-
-    //private static final Logger LOGGER = Logger.getLogger(HandleArrowShoot.class.getName());
 
     public HandleArrowShoot(Board board, Hero hero) {
         this.board = board;
@@ -25,6 +25,10 @@ public class HandleArrowShoot {
         System.out.println(message);
     }
 
+    /**
+     * handleArrowShootWall.
+     * A nyíl a falat találja el
+     */
     public void handleArrowShootWall() {
         hero.setNumberOfArrows(hero.getNumberOfArrows() - 1);
         System.out.println("A falat találtad el, elvesztettél egy nyílat!");

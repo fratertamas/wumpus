@@ -5,6 +5,10 @@ import java.util.Scanner;
 import hu.nye.wumpus.io.loader.FileLoader;
 import hu.nye.wumpus.model.Hero;
 
+/**
+ * HeroDBLoader.
+ * Hős betöltése DB-ből
+ */
 public class HeroDBLoader implements FileLoader {
     @Override
     public Hero load(String gameState) {

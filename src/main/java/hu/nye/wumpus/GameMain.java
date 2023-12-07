@@ -6,6 +6,10 @@ import javax.xml.stream.XMLStreamException;
 
 import hu.nye.wumpus.gameengine.GameManager;
 
+/**
+ * GameMain.
+ * Játék indításának helye
+ */
 public class GameMain {
     public static void main(String[] args) throws IOException, SQLException, XMLStreamException {
         GameManager gameManager = new GameManager();
