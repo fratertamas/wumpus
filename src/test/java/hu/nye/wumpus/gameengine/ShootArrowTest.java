@@ -32,7 +32,7 @@ public class ShootArrowTest {
                         {'W', 'W', 'W', 'P', 'W', 'W'},
         };
         when(mockBoard.getBoard()).thenReturn(mockBoardArray);
-        ShootArrow underTest = new ShootArrow(mockBoard, mockHero, mockHandleArrowShoot);
+        ShootArrow underTest = new ShootArrow(mockBoard, mockHero, mockArrow, mockHandleArrowShoot);
         underTest.shootArrow();
 
         verify(mockHero, times(1)).getNumberOfArrows();

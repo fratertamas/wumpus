@@ -9,6 +9,7 @@ import hu.nye.wumpus.database.GameQuery;
 import hu.nye.wumpus.io.saver.impl.JsonGameSaver;
 import hu.nye.wumpus.io.saver.impl.XmlGameSaver;
 import hu.nye.wumpus.menu.Menu;
+import hu.nye.wumpus.model.Arrow;
 import hu.nye.wumpus.model.Board;
 import hu.nye.wumpus.model.Hero;
 import hu.nye.wumpus.model.Player;
@@ -19,7 +20,8 @@ import hu.nye.wumpus.utils.DisplayUtils;
  * Játék fő osztálya
  */
 public class Game {
-    private final DisplayUtils displayUtils;
+    private DisplayUtils displayUtils;
+    private Arrow arrow;
     private Board board;
     private Hero hero;
     private ShootArrow shootArrow;
@@ -36,8 +38,9 @@ public class Game {
     public Game(Board board, Hero hero, Player player) {
         this.board = board;
         this.hero = hero;
+        this.arrow = new Arrow(hero.getHeroRow(), hero.getHeroColumn(), hero.getHeroDirection());
         this.handleArrowShot = new HandleArrowShoot(board, hero);
-        this.shootArrow = new ShootArrow(board, hero, handleArrowShot);
+        this.shootArrow = new ShootArrow(board, hero, arrow, handleArrowShot);
         this.playerScore = 100;
         this.player = player;
         this.displayUtils = new DisplayUtils(board, hero);
@@ -52,8 +55,9 @@ public class Game {
     public Game(Board board, Hero hero, Player player, int score) {
         this.board = board;
         this.hero = hero;
+        this.arrow = new Arrow(hero.getHeroRow(), hero.getHeroColumn(), hero.getHeroDirection());
         this.handleArrowShot = new HandleArrowShoot(board, hero);
-        this.shootArrow = new ShootArrow(board, hero, handleArrowShot);
+        this.shootArrow = new ShootArrow(board, hero, arrow, handleArrowShot);
         this.playerScore = score;
         this.player = player;
         this.displayUtils = new DisplayUtils(board, hero);

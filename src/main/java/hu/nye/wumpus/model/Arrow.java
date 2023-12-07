@@ -19,6 +19,18 @@ public class Arrow {
         return arrowRow;
     }
 
+    public void setArrowRow(int arrowRow) {
+        this.arrowRow = arrowRow;
+    }
+
+    public void setArrowColumn(int arrowColumn) {
+        this.arrowColumn = arrowColumn;
+    }
+
+    public void setArrowDirection(char arrowDirection) {
+        this.arrowDirection = arrowDirection;
+    }
+
     public int getArrowColumn() {
         return arrowColumn;
     }
