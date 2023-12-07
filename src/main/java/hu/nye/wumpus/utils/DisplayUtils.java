@@ -21,7 +21,7 @@ public class DisplayUtils {
      * Játéktér kiírása
      */
     public void printBoard() {
-        int row = hero.getHeroRow() - 1;
+        int row = hero.getHeroRow();
         for (int i = 0; i < board.getSizeOfBoard(); i++) {
             for (int j = 0; j < board.getSizeOfBoard(); j++) {
                 if (j == hero.getHeroColumn() && i == row) {
@@ -40,7 +40,7 @@ public class DisplayUtils {
      */
     public void printHeroData() {
         System.out.println("Pálya mérete: " + board.getSizeOfBoard());
-        System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow());
+        System.out.println("Hős pozíciója: " + (char) ('A' + hero.getHeroColumn()) + " " + (hero.getHeroRow() + 1));
         System.out.println("Hős iránya: " + hero.getHeroDirection());
         System.out.println("Hős nyílainak száma: " + hero.getNumberOfArrows());
     }

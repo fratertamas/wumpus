@@ -121,7 +121,7 @@
                         <exclude>hu/nye/wumpus/database/*</exclude>
                         <exclude>hu/nye/wumpus/gameengine/GameManager.*</exclude>
 
-                        <!--exclude>hu/nye/wumpus/**/*</exclude-->
+                        <exclude>hu/nye/wumpus/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

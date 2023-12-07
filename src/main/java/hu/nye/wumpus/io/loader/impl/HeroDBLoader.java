@@ -18,7 +18,7 @@ public class HeroDBLoader implements FileLoader {
 
         //A hős poziciója és iránya
         int heroColumn = scanner.next().charAt(0) - 'A';
-        int heroRow = scanner.nextInt();
+        int heroRow = scanner.nextInt() - 1;
         char heroDirection = scanner.next().charAt(0);
 
         scanner.close();
