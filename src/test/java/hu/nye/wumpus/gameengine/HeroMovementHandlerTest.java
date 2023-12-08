@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -30,18 +31,16 @@ public class HeroMovementHandlerTest {
         char[][] mockBoardArray = {
                 {'W', 'W', 'W', 'W', 'W', 'W'},
                 {'W', ' ', ' ', ' ', ' ', 'W'},
-                {'W', 'U', 'G', 'P', 'W', 'W'},
+                {'W', 'U', 'G', 'P', ' ', 'W'},
                 {'W', ' ', ' ', ' ', ' ', 'W'},
-                {'W', ' ', ' ', 'P', 'W', 'W'},
-                {'W', 'W', 'W', 'P', 'W', 'W'},
+                {'W', ' ', ' ', 'P', ' ', 'W'},
+                {'W', 'W', 'W', 'W', 'W', 'W'},
         };
 
-        when(mockHero.getHeroDirection()).thenReturn('E');
+        when(mockHero.getHeroDirection()).thenReturn('W');
         when(mockHero.getHeroRow()).thenReturn(4);
         when(mockHero.getHeroColumn()).thenReturn(1);
         when(mockBoard.getBoard()).thenReturn(mockBoardArray);
-
-        System.out.println("B : " + mockBoard.getBoard()[4][2]);
 
         HeroMovementHandler underTest = new HeroMovementHandler(mockPlayer, mockHero, mockBoard);
         underTest.moveHero(10);
@@ -52,33 +51,110 @@ public class HeroMovementHandlerTest {
     }
 
     @Test
-    public void testMoveHeroShouldMoveLeftToPCellWhenCalled() throws SQLException {
-     /*   char[][] mockBoardArray = {
+    public void testMoveHeroShouldStandPCellWithZeroArrowWhenCalled() throws SQLException {
+        char[][] mockBoardArray = {
                 {'W', 'W', 'W', 'W', 'W', 'W'},
                 {'W', ' ', ' ', ' ', ' ', 'W'},
-                {'W', 'U', 'G', 'P', 'W', 'W'},
+                {'W', 'U', 'G', 'P', ' ', 'W'},
                 {'W', ' ', ' ', ' ', ' ', 'W'},
-                {'W', ' ', ' ', 'P', 'W', 'W'},
-                {'W', 'W', 'W', 'P', 'W', 'W'},
+                {'W', ' ', ' ', 'P', ' ', 'W'},
+                {'W', 'W', 'W', 'W', 'W', 'W'},
         };
 
         when(mockHero.getHeroDirection()).thenReturn('E');
         when(mockHero.getHeroRow()).thenReturn(4);
-        when(mockHero.getHeroColumn()).thenReturn(2);
+        when(mockHero.getHeroColumn()).thenReturn(3);
         when(mockBoard.getBoard()).thenReturn(mockBoardArray);
-
-        System.out.println("B : " + mockBoard.getBoard()[4][3] + " " +
-                "Hero: " + mockHero.getHeroRow() + " " + mockHero.getHeroColumn());
-        System.out.println(mockHero.getHeroDirection());
+        when(mockHero.getNumberOfArrows()).thenReturn(0);
 
         HeroMovementHandler underTest = new HeroMovementHandler(mockPlayer, mockHero, mockBoard);
         underTest.moveHero(10);
 
-        System.out.println("B2 : " + mockBoard.getBoard()[mockHero.getHeroRow()][mockHero.getHeroColumn()] + " " +
-                "Hero2: " + mockHero.getHeroRow() + " " + mockHero.getHeroColumn());
 
         char output = mockBoard.getBoard()[mockHero.getHeroRow()][mockHero.getHeroColumn()];
 
-        assertEquals('P', output);*/
+        assertEquals('P', output);
+        assertEquals(0, mockHero.getNumberOfArrows());
+    }
+
+    @Test
+    public void testMoveHeroShouldStandPCellWithNonZeroArrowWhenCalled() throws SQLException {
+        char[][] mockBoardArray = {
+                {'W', 'W', 'W', 'W', 'W', 'W'},
+                {'W', ' ', ' ', ' ', ' ', 'W'},
+                {'W', 'U', 'G', 'P', ' ', 'W'},
+                {'W', ' ', ' ', ' ', ' ', 'W'},
+                {'W', ' ', ' ', 'P', ' ', 'W'},
+                {'W', 'W', 'W', 'W', 'W', 'W'},
+        };
+
+        when(mockHero.getHeroDirection()).thenReturn('N');
+        when(mockHero.getHeroRow()).thenReturn(4);
+        when(mockHero.getHeroColumn()).thenReturn(3);
+        when(mockBoard.getBoard()).thenReturn(mockBoardArray);
+        when(mockHero.getNumberOfArrows()).thenReturn(2);
+
+        HeroMovementHandler underTest = new HeroMovementHandler(mockPlayer, mockHero, mockBoard);
+        underTest.moveHero(10);
+
+
+        char output = mockBoard.getBoard()[mockHero.getHeroRow()][mockHero.getHeroColumn()];
+
+        assertEquals('P', output);
+        assertNotEquals(0, mockHero.getNumberOfArrows());
+    }
+
+    @Test
+    public void testMoveHeroShouldStandGCellWhenCalled() throws SQLException {
+        char[][] mockBoardArray = {
+                {'W', 'W', 'W', 'W', 'W', 'W'},
+                {'W', ' ', ' ', ' ', ' ', 'W'},
+                {'W', 'U', 'G', 'P', ' ', 'W'},
+                {'W', ' ', ' ', ' ', ' ', 'W'},
+                {'W', ' ', ' ', 'P', ' ', 'W'},
+                {'W', 'W', 'W', 'W', 'W', 'W'},
+        };
+
+        when(mockHero.getHeroDirection()).thenReturn('S');
+        when(mockHero.getHeroRow()).thenReturn(2);
+        when(mockHero.getHeroColumn()).thenReturn(2);
+        when(mockBoard.getBoard()).thenReturn(mockBoardArray);
+        when(mockHero.getNumberOfArrows()).thenReturn(2);
+
+        HeroMovementHandler underTest = new HeroMovementHandler(mockPlayer, mockHero, mockBoard);
+        underTest.moveHero(10);
+
+
+        char output = mockBoard.getBoard()[mockHero.getHeroRow()][mockHero.getHeroColumn()];
+
+        assertEquals('G', output);
+
+    }
+
+    @Test
+    public void testMoveHeroShouldStandUCellWhenCalled() throws SQLException {
+        char[][] mockBoardArray = {
+                {'W', 'W', 'W', 'W', 'W', 'W'},
+                {'W', ' ', ' ', ' ', ' ', 'W'},
+                {'W', 'U', 'G', 'P', ' ', 'W'},
+                {'W', ' ', ' ', ' ', ' ', 'W'},
+                {'W', ' ', ' ', 'P', ' ', 'W'},
+                {'W', 'W', 'W', 'W', 'W', 'W'},
+        };
+
+        when(mockHero.getHeroDirection()).thenReturn('N');
+        when(mockHero.getHeroRow()).thenReturn(2);
+        when(mockHero.getHeroColumn()).thenReturn(1);
+        when(mockBoard.getBoard()).thenReturn(mockBoardArray);
+        when(mockHero.getNumberOfArrows()).thenReturn(2);
+
+        HeroMovementHandler underTest = new HeroMovementHandler(mockPlayer, mockHero, mockBoard);
+        underTest.moveHero(10);
+
+
+        char output = mockBoard.getBoard()[mockHero.getHeroRow()][mockHero.getHeroColumn()];
+
+        assertEquals('U', output);
+
     }
 }

@@ -136,7 +136,7 @@ public class Game {
         gameQuery.saveGame(player, save, playerScore);
     }
 
-    private String createSaveString() {
+    String createSaveString() {
         String save = "";
         save += board.getSizeOfBoard() + " ";
         save += (char) ('A' + hero.getHeroColumn()) + " " + hero.getHeroRow() + " " + hero.getHeroDirection();
@@ -149,7 +149,7 @@ public class Game {
         return save;
     }
 
-    private int heroNumberOfArrowsInitialization(Board board) {
+    int heroNumberOfArrowsInitialization(Board board) {
         int numberOfArrows = 0;
         for (int i = 0; i < board.getSizeOfBoard(); i++) {
             for (int j = 0; j < board.getSizeOfBoard(); j++) {

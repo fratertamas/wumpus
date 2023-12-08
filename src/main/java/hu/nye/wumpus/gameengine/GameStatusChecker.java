@@ -23,10 +23,10 @@ public class GameStatusChecker {
     }
 
     private void handleVictory(Player player, int playerScore) throws SQLException {
-        System.out.println("Felvetted az aranyat! Nyertél!");
         playerScore += 10;
-        System.out.println("TOP SCORE: " + playerScore);
         TopScoreQuery topScoreQuery = new TopScoreQuery();
         topScoreQuery.saveTopScore(player, playerScore);
+        System.out.println("Felvetted az aranyat! Nyertél!");
+        System.out.println("TOP SCORE: " + playerScore);
     }
 }
