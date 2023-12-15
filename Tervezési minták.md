@@ -45,7 +45,7 @@ A tervezési minták által a rendszer egyszerűbb és karbantarhatóbb, illetve
 <li style="text-align: justify;"><strong>Helyettes (Proxy): </strong>A Helyettes egy olyan tervezési minta, amely egy másik objektum helyettesítését biztosítja. A Helyettes lehetőséget ad egy köztes objektumnak, hogy kontrollálja vagy kiegészítse egy másik objektum hozzáférését. Ez a minta például akkor hasznos, ha az eredeti objektum hozzáférését vezérelni vagy logolni szeretnénk anélkül, hogy megváltoztatnánk az eredeti objektumot.</li>
 </ul>
 </li>
-<li style="text-align: justify;"><strong>Szerkezeti minták: </strong>Ezek a minták az osztályok és objektumok összetételével foglalkoznak. Elmagyarázzák, hogyan lehet az objektumokat és osztályokat nagyobb szerkezetekbe összeállítani, miközben a szerkezeteket rugalmasan és hatékonyan tartják.
+<li style="text-align: justify;"><strong>Viselkedési minták: </strong>Ezek a minták az objektumok közötti kommunikációra és az algoritmusok kiosztására összpontosítanak. Az objektumok közötti hatékony kommunikációról való gondoskodás mellett a felelősség megosztásáról is gondoskodnak.
 <ul>
 <li style="text-align: justify;"><strong>Parancs (Command): </strong>A Parancs egy olyan tervezési minta, amely egy parancsot reprezentál egy objektumban, lehetővé téve ezzel a kérések paraméterezhetővé és eltolhatóvá tételét, kérések rögzítését és visszavonását, valamint különböző kéréseket tároló objektumok kezelését.</li>
 <li style="text-align: justify;"><strong>Megfigyelő (Observer): </strong>A Megfigyelő egy olyan tervezési minta, amely az objektumok közötti egyes események követését és azokra reagálást teszi lehetővé. Az egyik objektum változása esetén a Megfigyelők (megfigyelő objektumok) értesítést kapnak és reagálhatnak az eseményre.</li>
